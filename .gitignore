@@ -101,3 +101,19 @@ ENV/
 
 # Selenium
 geckodriver.log
+
+# Images downloaded
+imgs
+
+# Testers
+app0.py
+app1.py
+app2.py
+
+# Locations
+Locations and Hashtags  - Bairros.csv
+Locations and Hashtags  - Hashtags.csv
+
+# Google API
+client_secret.json
+

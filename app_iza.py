@@ -10,13 +10,13 @@ dotenv.load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 from src import InstaBot
 
-location_ids = get_locations_id('João Pedro')
+location_ids = get_locations_id('IZABELLA')
 
 if __name__ == '__main__':
 
     bot = InstaBot(
-        login=os.environ.get('LOGIN', ''),
-        password=os.environ.get('PASSWORD', ''),
+        login=os.environ.get('IZALOGIN', ''),
+        password=os.environ.get('IZAPASSWORD', ''),
         like_per_day=1400,
         comments_per_day=0,
         tag_list=[id['location_id'] for id in location_ids][::-2],
@@ -35,7 +35,7 @@ if __name__ == '__main__':
                       ["photo", "picture", "pic", "shot", "snapshot"],
                       ["is", "looks", "feels", "is really"],
                       ["great", "super", "good", "very good", "good", "wow",
-                       "WOW", "cool", "GREAT","magnificent", "magical",
+                       "WOW", "cool", "GREAT", "magnificent", "magical",
                        "very cool", "stylish", "beautiful", "so beautiful",
                        "so stylish", "so professional", "lovely",
                        "so lovely", "very lovely", "glorious","so glorious",

@@ -1,16 +1,21 @@
+import time
+
 import requests
 
-path = 'https://small-big-api.herokuapp.com/photo'
+path = 'http://small-big-api.herokuapp.com/photo/unprocessed'
 response = requests.get(path, stream=False)
 result = response.json()
 img_count, img_reponse_failed = 0, 0
 for small_big in result['result']:
-    img_count += 1
+    time.sleep(5)
     with open('imgs/'+small_big['shortcode'] + '.jpg', 'wb') as handle:
+        img_count += 1
         print(small_big['shortcode'])
         response = requests.get(small_big['image_url'], stream=True)
         if not response.ok:
+            print(response)
             img_reponse_failed += 1
+            delete = requests.delete(path + '/delete/' + small_big['shortcode'])
             print(response)
         for block in response.iter_content(1024):
             if not block:
