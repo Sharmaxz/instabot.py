@@ -9,6 +9,7 @@ path = 'unprocessed'
 instagram_url = 'https://www.instagram.com/p/'
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
+
 def add_location(shortcode, data):
     try:
         data = {
@@ -52,7 +53,7 @@ def get_locations_id(name):
     creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client = gspread.authorize(creds)
 
-    sheet = client.open('Locations and Hashtags').sheet1
+    sheet = client.open('Locations and Hashtags').worksheet('Hashtags')
     result = sheet.get_all_records()
     location_filtered = [l for l in result if name in l['runner']]
     format = list(map(lambda obj: {'location_id': f"l:{obj['id']}", 'name': obj['location']}, location_filtered))
@@ -60,4 +61,4 @@ def get_locations_id(name):
     return format
 
 
-#update_all_location()
+# update_all_location()

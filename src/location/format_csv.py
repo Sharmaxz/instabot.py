@@ -1,5 +1,6 @@
 import csv
 
+
 def format_csv(csv_file, start_row, column, city, country):
     with open(csv_file, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',', encoding='utf8')
