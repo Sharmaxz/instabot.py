@@ -5,7 +5,7 @@ path = 'https://small-big-api.herokuapp.com/photo'
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 def delete_all_duplicate():
-    time.sleep(5)
+    time.sleep(60 * 30)
     response = requests.get(path, stream=False)
     result = response.json()
 
