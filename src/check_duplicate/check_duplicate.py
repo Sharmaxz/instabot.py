@@ -6,7 +6,7 @@ headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 def delete_all_duplicate():
     time.sleep(60 * 30)
-    response = requests.get(path, stream=False)
+    response = requests.get(path + '/processed', stream=False)
     result = response.json()
 
     list_shortcode = list(map(lambda _obj: _obj['shortcode'], result['result']))

@@ -35,7 +35,6 @@ class LocBot:
     ## City
     city_name = 'Rio de Janeiro, Rio de Janeiro'
 
-
     def start(self):
         self.write_log('Starting Locbot')
         self.write_log('Opening browser')
