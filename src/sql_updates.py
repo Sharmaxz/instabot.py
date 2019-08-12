@@ -9,15 +9,15 @@ def check_and_update(self):
     table_info = self.follows_db_c.execute("pragma table_info(medias)")
     table_column_status = [o for o in table_info if o[1] == "status"]
     if not table_column_status:
-        self.follows_db_c.execute("ALTER TABLE medias ADD COLUMN status integer")
+        self.follows_db_c.execute("ALTER TABLE medias1 ADD COLUMN status integer")
     table_info = self.follows_db_c.execute("pragma table_info(medias)")
     table_column_status = [o for o in table_info if o[1] == "datetime"]
     if not table_column_status:
-        self.follows_db_c.execute("ALTER TABLE medias ADD COLUMN datetime TEXT")
+        self.follows_db_c.execute("ALTER TABLE medias1 ADD COLUMN datetime TEXT")
     table_info = self.follows_db_c.execute("pragma table_info(medias)")
     table_column_status = [o for o in table_info if o[1] == "code"]
     if not table_column_status:
-        self.follows_db_c.execute("ALTER TABLE medias ADD COLUMN code TEXT")
+        self.follows_db_c.execute("ALTER TABLE medias1 ADD COLUMN code TEXT")
     table_info = self.follows_db_c.execute("pragma table_info(usernames)")
     table_column_status = [o for o in table_info if o[1] == "username_id"]
     if not table_column_status:
@@ -49,7 +49,7 @@ def check_and_update(self):
 
 def check_already_liked(self, media_id):
     """ controls if media already liked before """
-    if self.follows_db_c.execute("SELECT EXISTS(SELECT 1 FROM medias WHERE media_id='"+
+    if self.follows_db_c.execute("SELECT EXISTS(SELECT 1 FROM medias1 WHERE media_id='" +
                                  media_id + "' LIMIT 1)").fetchone()[0] > 0:
         return 1
     return 0
@@ -71,8 +71,8 @@ def check_already_unfollowed(self, user_id):
 def insert_media(self, media_id, status):
     """ insert media to medias """
     now = datetime.now()
-    self.follows_db_c.execute("INSERT INTO medias (media_id, status, datetime) VALUES('"+
-                              media_id +"','"+ status +"','"+ str(now) +"')")
+    self.follows_db_c.execute("INSERT INTO medias1 (media_id, status, datetime) VALUES('" +
+                              media_id +"','" + status +"','" + str(now) +"')")
 
 def insert_username(self, user_id, username):
     """ insert user_id to usernames """

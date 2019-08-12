@@ -5,8 +5,7 @@ import json
 import time
 
 url = 'https://small-big-api.herokuapp.com/photo'
-#url = 'http://127.0.0.1:5000/photo'
-path = 'processed'
+path = 'unprocessed'
 instagram_url = 'https://www.instagram.com/p/'
 url_postmon = 'http://api.postmon.com.br/v1/cep/'
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
@@ -43,6 +42,7 @@ def get_location(shortcode):
         if 'RJ' in r['estado']:
             zone = r['bairro']
         else:
+            #TODO:
             return print(a)
 
     return {'id': id, 'name': name, 'address_json': address_json, 'zone': zone}
@@ -52,7 +52,7 @@ def update_all_location():
     response = requests.get(url + '/' + path, stream=False)
     result = response.json()
     for small_big in result['result']:
-        #time.sleep(5)
+        time.sleep(5)
         try:
             data = get_location(small_big['shortcode'])
             add_location(small_big['shortcode'], data)
@@ -76,4 +76,4 @@ def get_locations_id(name):
     return format
 
 
-update_all_location()
+#update_all_location()
