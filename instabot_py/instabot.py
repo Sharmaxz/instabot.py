@@ -379,7 +379,7 @@ class InstaBot:
                             "Challenge Required.\n\nEnter the code sent to your mail/phone: "
                         )
                         challenge_security_post = {
-                            "security_code": int(challenge_userinput_code)
+                            "security_code": challenge_userinput_code
                         }
 
                         complete_challenge = clg.post(
